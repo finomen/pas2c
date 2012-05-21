@@ -131,54 +131,54 @@ struct pascal_grammar :
 		index_list = (new_ordinal_type | identifier) % lit(",");
     }
 
-    typedef std::string::const_iterator iterator;
+	typedef std::string::const_iterator iterator;
 
-    qi::rule<iterator, std::string(), ascii::space_type> identifier;
-    qi::rule<iterator, std::string(), ascii::space_type> char_string;
-    qi::rule<iterator, char(), ascii::space_type> cchar_;
-    qi::rule<iterator, std::vector<std::string>(), ascii::space_type> identifier_list;
-    
-    qi::rule<iterator, operators, ascii::space_type> relop;
-    qi::rule<iterator, operators, ascii::space_type> addop;
-    qi::rule<iterator, operators, ascii::space_type> mulop;
-    qi::rule<iterator, operators, ascii::space_type> sop;
-    qi::rule<iterator, operators, ascii::space_type> eop;
-    qi::rule<iterator, operators, ascii::space_type> notop;
-    
-    qi::rule<iterator, size_t(), ascii::space_type> label;
-    qi::rule<iterator, std::vector<size_t>(), ascii::space_type> label_list;
-    qi::rule<iterator, std::vector<size_t>(), ascii::space_type> label_declaration_part;
-    
-    qi::rule<iterator, constant(), ascii::space_type> constant_definition;
-    qi::rule<iterator, std::vector<constant>(), ascii::space_type> constant_list;
-    qi::rule<iterator, std::vector<constant>(), ascii::space_type> constant_definition_part;
-    
-    qi::rule<iterator, cexpression(), ascii::space_type> cexpression_;
-    qi::rule<iterator, cexpression(), ascii::space_type> csimple_expression;
-    
-    qi::rule<iterator, cexpression(), ascii::space_type> cterm;
-    qi::rule<iterator, cexpression(), ascii::space_type> cfactor;
-    qi::rule<iterator, cexpression(), ascii::space_type> cexponentation;
-    qi::rule<iterator, cexpression(), ascii::space_type> cprimary;
-    qi::rule<iterator, unsigned_constant(), ascii::space_type> unsigned_constant_;
-    qi::rule<iterator, signed_constant(), ascii::space_type> constant_;
+	qi::rule<iterator, std::string(), ascii::space_type> identifier;
+	qi::rule<iterator, std::string(), ascii::space_type> char_string;
+	qi::rule<iterator, char(), ascii::space_type> cchar_;
+	qi::rule<iterator, std::vector<std::string>(), ascii::space_type> identifier_list;
 
-    qi::rule<iterator, nil(), ascii::space_type> nil_;
-    
-    /// Temp rules
-    qi::rule<iterator, cexpression::binary(), ascii::space_type> ccomparsion;
-    qi::rule<iterator, cexpression::binary(), ascii::space_type> cadd;
-    qi::rule<iterator, cexpression::binary(), ascii::space_type> cmul;
-    qi::rule<iterator, cexpression::unary_left(), ascii::space_type> csign;
-    qi::rule<iterator, cexpression::binary(), ascii::space_type> cexp;
-    qi::rule<iterator, cexpression::unary_left(), ascii::space_type> cpnot;
-    
-    qi::rule<iterator, file(), ascii::space_type> file_;
-    qi::rule<iterator, program(), ascii::space_type> program_;
-    
-    qi::rule<iterator, block(), ascii::space_type> block_;
+	qi::rule<iterator, operators, ascii::space_type> relop;
+	qi::rule<iterator, operators, ascii::space_type> addop;
+	qi::rule<iterator, operators, ascii::space_type> mulop;
+	qi::rule<iterator, operators, ascii::space_type> sop;
+	qi::rule<iterator, operators, ascii::space_type> eop;
+	qi::rule<iterator, operators, ascii::space_type> notop;
 
-    qi::rule<iterator, type_decl(), ascii::space_type> type_definition;
+	qi::rule<iterator, size_t(), ascii::space_type> label;
+	qi::rule<iterator, std::vector<size_t>(), ascii::space_type> label_list;
+	qi::rule<iterator, std::vector<size_t>(), ascii::space_type> label_declaration_part;
+
+	qi::rule<iterator, constant(), ascii::space_type> constant_definition;
+	qi::rule<iterator, std::vector<constant>(), ascii::space_type> constant_list;
+	qi::rule<iterator, std::vector<constant>(), ascii::space_type> constant_definition_part;
+
+	qi::rule<iterator, cexpression(), ascii::space_type> cexpression_;
+	qi::rule<iterator, cexpression(), ascii::space_type> csimple_expression;
+
+	qi::rule<iterator, cexpression(), ascii::space_type> cterm;
+	qi::rule<iterator, cexpression(), ascii::space_type> cfactor;
+	qi::rule<iterator, cexpression(), ascii::space_type> cexponentation;
+	qi::rule<iterator, cexpression(), ascii::space_type> cprimary;
+	qi::rule<iterator, unsigned_constant(), ascii::space_type> unsigned_constant_;
+	qi::rule<iterator, signed_constant(), ascii::space_type> constant_;
+
+	qi::rule<iterator, nil(), ascii::space_type> nil_;
+
+	/// Temp rules
+	qi::rule<iterator, cexpression::binary(), ascii::space_type> ccomparsion;
+	qi::rule<iterator, cexpression::binary(), ascii::space_type> cadd;
+	qi::rule<iterator, cexpression::binary(), ascii::space_type> cmul;
+	qi::rule<iterator, cexpression::unary_left(), ascii::space_type> csign;
+	qi::rule<iterator, cexpression::binary(), ascii::space_type> cexp;
+	qi::rule<iterator, cexpression::unary_left(), ascii::space_type> cpnot;
+
+	qi::rule<iterator, file(), ascii::space_type> file_;
+	qi::rule<iterator, program(), ascii::space_type> program_;
+
+	qi::rule<iterator, block(), ascii::space_type> block_;
+
+	qi::rule<iterator, type_decl(), ascii::space_type> type_definition;
 	qi::rule<iterator, std::vector<type_decl>(), ascii::space_type> type_definition_list;
 	qi::rule<iterator, std::vector<type_decl>(), ascii::space_type> type_definition_part;
 	qi::rule<iterator, type_decl(), ascii::space_type> type_denoter;
