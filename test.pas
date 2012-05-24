@@ -15,7 +15,7 @@ pointer=^domain;
 alias=typedef;
 enum=(one,two,three);
 subrange=-5..6;
-subrange1='A'..'Z';
+subrange1="A".."Z";
 array1 = ARRAY [1..10] of pointer;
 array2 = ARRAY [1..10, subrange] of enum;
 .
