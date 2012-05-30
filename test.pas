@@ -53,6 +53,7 @@ END;
 
 BEGIN
 ia := b;
+ia := a1[1];
 ib := ia + b;
 ic := ia ** b;
 ia := ia * ib;
@@ -61,6 +62,7 @@ ia := ia AND b;
 ia := ia OR b;
 ia := NOT b;
 
+IF ia = ib THEN foo;
 IF ia = ib THEN foo ELSE foo1;
 ia := ib;
 FOR ia := b TO b DO foo;

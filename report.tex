@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper,oneside]{report}
+\usepackage [height=25cm,a4paper,hmargin={2cm,2cm}]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{misccorr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{listings}
+\lstloadlanguages{C++} %Загружаемые языки
+
+\lstset{extendedchars=true, %Чтобы русские буквы в комментариях были
+        commentstyle=\it,
+        stringstyle=\bf,
+        language=Java, %Язык по умолчанию
+        breaklines=true,
+        breakatwhitespace=true,
+        belowcaptionskip=5pt}
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\thesection}{\arabic{section}}
+
+\begin{document}
+\title{Лабораторная работа №3 \endgraf << Использование автоматических генераторов анализаторов >>}
+\author{Николай Фильченко, гр. 3539}
+
+\begin{titlepage}
+
+\begin{center}
+
+
+% Upper part of the page   
+\textsc{Санкт-Петербургский государственный университет
+информационных технологий, механики и оптики \\
+Факультет информационных технологий и программирования \\
+Кафедра <<Компьютерные Технологии>>}\\[8.5cm]
+
+
+% Title
+\textsc{\Large Лабораторная работа №3. Использование автоматических генераторов анализаторов}\\[0.5cm]
+
+\textsc{\Large Вариант 3. Перевод с Паскаля на Си}\\[3cm]
+
+
+% Author and supervisor
+\textsc{Николай Фильченко, гр. 3539}
+
+\vfill
+
+% Bottom of the page
+{\large \today}
+
+\end{center}
+
+\end{titlepage}
+
+\setcounter{page}{2}
+
+\tableofcontents
+
+\newpage
+
+\section{Постановка задачи}
+
+Транслировать программу с языка \emph{Pascal} на язык \emph{C++}. За основу взято описание грамматики языка 
+из Standard Pascal -- User Reference Manual", которая адаптирована для использования в boost.spirit 
+(убрана левая рекурсия, немного упрощены правила с опциональными частями и последовательности), добавлены
+константные выражения.
+
+Не реализованы следующие кострукции
+\begin{itemize}
+\item Типизированные файлы;
+\item Определение составных типов;
+\item Массивы нетривиальных типов;
+\item Поля в структурах нетривиальных типов;
+\item Множества;
+\item Оператор case;
+\item Вложенные неполные условные операторы;
+\end{itemize}
+
+Возведение в степень и массивы транслируются, но не имеют реализации на \emph{C++}.
+
+\section{Построение грамматики}
+
+Построена атрибутно-управляемая грамматика, распознающая указанное подмножество языка \emph{Pascal}
+и выполняющая указанные преобразования.
+
+\lstinputlisting{grammar_ok.cpp}
+
+Также небольшой вспомогательный заголовочный файл
+
+\lstinputlisting{pascal.h}
+
+\section{Тестирование}
+
+Небольшой тест:
+
+\lstinputlisting{test.pas}
+
+Результат работы транслятора:
+
+\lstinputlisting{test.cpp}
+
+\end{document}

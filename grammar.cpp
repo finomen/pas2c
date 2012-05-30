@@ -256,7 +256,7 @@ struct pascal_grammar :
 				(procedure_heading >> lit(";") >> procedure_block) [_val = _1 + " {\n" + _2 + "\n}\n"];
 
 		procedure_heading = procedure_identification [_val = "void " + _1 + "("]
-			  >> -formal_parameter_list [_val += _1] >> eps [_val += ")"];
+			  >> formal_parameter_list [_val += _1] >> eps [_val += ")"];
 		directive = no_case[lit("FORWARD")] [_val = "/* FORWARD */"]
 			 | no_case[lit("EXTERNAL")] [_val = "/* EXTERNAL */"];
 
