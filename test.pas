@@ -10,36 +10,66 @@ f=a**b;
 g=(f);
 complex = (a + 6) ** (a + 4 * 7);
 k = .7;
-f = 1 = 2;
+l = 1 = 2;
 TYPE
+domain=char;
 pointer=^domain;
-alias=typedef;
-enum=(one,two,three);
+alias=domain;
+enumt=(one,two,three);
 subrange=-5..6;
 subrange1="A".."Z";
 array1 = ARRAY [1..10] of pointer;
-array2 = ARRAY [1..10, subrange] of enum;
+array2 = ARRAY [1..10, subrange] of enumt;
 VAR
-a, b, c : integer;
-a, b, c : array [1..10, 20..30] of char;
+ia, ib, ic : integer;
+a1, b1, c1 : array [1..10, 20..30] of char;
 PROCEDURE foo; EXTERNAL;
-FUNCTION foo : real; EXTERNAL;
-PROCEDURE bar (X, Y : Integer; S : String); FORWARD;
+PROCEDURE foo (ia : Integer); FORWARD;
+FUNCTION foo1 : real; FORWARD;
+PROCEDURE bar1 (X, Y : Integer; S : String); FORWARD;
 PROCEDURE bar2 (VAR X, Y : Integer; S : String); FORWARD;
-FUNCTION bar (X, Y : Integer; S : String): real; EXTERNAL;
-FUNCTION bar2 (VAR X, Y : Integer; S : String): real; EXTERNAL;
+FUNCTION bar3 (X, Y : Integer; S : String): real; EXTERNAL;
+FUNCTION bar4 (VAR X, Y : Integer; S : String): real; EXTERNAL;
+
+FUNCTION bar2 (X, Y: Integer; S: String) : real;
+BEGIN
+foo(5)
+END;
+
+FUNCTION foo1 : real;
+BEGIN
+foo(5)
+END;
+
+PROCEDURE foo (ia: Integer);
+BEGIN
+foo(5)
+END;
+
+PROCEDURE foo;
+BEGIN
+foo(5)
+END;
 
 BEGIN
-a := b;
-b := a + c;
-e := a ** b;
-a := a * b;
-a := a DIV k;
-a := a AND b;
-a := a OR b;
-a := NOT b;
+ia := b;
+ib := ia + b;
+ic := ia ** b;
+ia := ia * ib;
+ia := ia DIV k;
+ia := ia AND b;
+ia := ia OR b;
+ia := NOT b;
 
-IF a = b THEN foo ELSE bar;
-a := b
+IF ia = ib THEN foo ELSE foo1;
+ia := ib;
+FOR ia := b TO b DO foo;
+WHILE ia = b DO foo;
+ia := b;
+REPEAT foo UNTIL foo1;
+WHILE foo1 DO BEGIN
+foo
+END
+
 END
 .
